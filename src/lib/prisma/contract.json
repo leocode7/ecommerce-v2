@@ -44,7 +44,7 @@
                 }
               },
               "name": {
-                "nullable": false,
+                "nullable": true,
                 "type": {
                   "codecId": "pg/text@1",
                   "kind": "scalar"
@@ -160,7 +160,7 @@
                 "name": {
                   "codecId": "pg/text@1",
                   "nativeType": "text",
-                  "nullable": false
+                  "nullable": true
                 },
                 "priceCents": {
                   "codecId": "pg/int4@1",
@@ -208,7 +208,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "ae4a39358dbdf2bf26354d58438fc5d97c3b187b7acee1b4e4ae15aa4853cae7"
+    "storageHash": "87b0cfd33619dee1f50d9384d70e656444b9a6f54c1725a47a3259bbb687559b"
   },
   "execution": {
     "executionHash": "a64b216d24816bc5177a1b8b42b6012ea602ae347892bd4a3b73bb84c2ccc685",

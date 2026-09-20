@@ -34,7 +34,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'ae4a39358dbdf2bf26354d58438fc5d97c3b187b7acee1b4e4ae15aa4853cae7'>;
+  StorageHashBase<'93908fe678bd0cff74cc1f4b1d01e7746552c8134bdeea44c4e4c3f4c44a4208'>;
 export type ExecutionHash =
   ExecutionHashBase<'a64b216d24816bc5177a1b8b42b6012ea602ae347892bd4a3b73bb84c2ccc685'>;
 export type ProfileHash =
@@ -244,9 +244,10 @@ export type FieldOutputTypes = {
   readonly public: {
     readonly Product: {
       readonly id: CodecTypes['pg/int4@1']['output'];
-      readonly name: CodecTypes['pg/text@1']['output'];
-      readonly slug: CodecTypes['pg/text@1']['output'];
+      readonly name: CodecTypes['pg/text@1']['output'] | null;
+      readonly slug: CodecTypes['pg/text@1']['output'] | null;
       readonly description: CodecTypes['pg/text@1']['output'] | null;
+      readonly teste: CodecTypes['pg/text@1']['output'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['output'] | null;
       readonly stock: CodecTypes['pg/int4@1']['output'];
       readonly active: CodecTypes['pg/bool@1']['output'];
@@ -259,9 +260,10 @@ export type FieldInputTypes = {
   readonly public: {
     readonly Product: {
       readonly id: CodecTypes['pg/int4@1']['input'];
-      readonly name: CodecTypes['pg/text@1']['input'];
-      readonly slug: CodecTypes['pg/text@1']['input'];
+      readonly name: CodecTypes['pg/text@1']['input'] | null;
+      readonly slug: CodecTypes['pg/text@1']['input'] | null;
       readonly description: CodecTypes['pg/text@1']['input'] | null;
+      readonly teste: CodecTypes['pg/text@1']['input'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['input'] | null;
       readonly stock: CodecTypes['pg/int4@1']['input'];
       readonly active: CodecTypes['pg/bool@1']['input'];
@@ -277,10 +279,11 @@ export type StorageColumnTypes = {
       readonly createdAt: CodecTypes['pg/timestamptz-temporal@1']['output'];
       readonly description: CodecTypes['pg/text@1']['output'] | null;
       readonly id: CodecTypes['pg/int4@1']['output'];
-      readonly name: CodecTypes['pg/text@1']['output'];
+      readonly name: CodecTypes['pg/text@1']['output'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['output'] | null;
-      readonly slug: CodecTypes['pg/text@1']['output'];
+      readonly slug: CodecTypes['pg/text@1']['output'] | null;
       readonly stock: CodecTypes['pg/int4@1']['output'];
+      readonly teste: CodecTypes['pg/text@1']['output'] | null;
       readonly updatedAt: CodecTypes['pg/timestamptz-temporal@1']['output'];
     };
   };
@@ -292,10 +295,11 @@ export type StorageColumnInputTypes = {
       readonly createdAt: CodecTypes['pg/timestamptz-temporal@1']['input'];
       readonly description: CodecTypes['pg/text@1']['input'] | null;
       readonly id: CodecTypes['pg/int4@1']['input'];
-      readonly name: CodecTypes['pg/text@1']['input'];
+      readonly name: CodecTypes['pg/text@1']['input'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['input'] | null;
-      readonly slug: CodecTypes['pg/text@1']['input'];
+      readonly slug: CodecTypes['pg/text@1']['input'] | null;
       readonly stock: CodecTypes['pg/int4@1']['input'];
+      readonly teste: CodecTypes['pg/text@1']['input'] | null;
       readonly updatedAt: CodecTypes['pg/timestamptz-temporal@1']['input'];
     };
   };
@@ -304,9 +308,10 @@ export type StorageColumnInputTypes = {
 export namespace Models {
   export type public_Product = {
     id: CodecTypes['pg/int4@1']['output'];
-    name: CodecTypes['pg/text@1']['output'];
-    slug: CodecTypes['pg/text@1']['output'];
+    name: CodecTypes['pg/text@1']['output'] | null;
+    slug: CodecTypes['pg/text@1']['output'] | null;
     description: CodecTypes['pg/text@1']['output'] | null;
+    teste: CodecTypes['pg/text@1']['output'] | null;
     priceCents: CodecTypes['pg/int4@1']['output'] | null;
     stock: CodecTypes['pg/int4@1']['output'];
     active: CodecTypes['pg/bool@1']['output'];
@@ -354,14 +359,19 @@ type ContractBase = Omit<
                 readonly name: {
                   readonly nativeType: 'text';
                   readonly codecId: 'pg/text@1';
-                  readonly nullable: false;
+                  readonly nullable: true;
                 };
                 readonly slug: {
                   readonly nativeType: 'text';
                   readonly codecId: 'pg/text@1';
-                  readonly nullable: false;
+                  readonly nullable: true;
                 };
                 readonly description: {
+                  readonly nativeType: 'text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                };
+                readonly teste: {
                   readonly nativeType: 'text';
                   readonly codecId: 'pg/text@1';
                   readonly nullable: true;
@@ -430,14 +440,18 @@ type ContractBase = Omit<
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
               readonly name: {
-                readonly nullable: false;
+                readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
               readonly slug: {
-                readonly nullable: false;
+                readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
               readonly description: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
+              readonly teste: {
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
@@ -477,6 +491,7 @@ type ContractBase = Omit<
                 readonly name: { readonly column: 'name' };
                 readonly slug: { readonly column: 'slug' };
                 readonly description: { readonly column: 'description' };
+                readonly teste: { readonly column: 'teste' };
                 readonly priceCents: { readonly column: 'priceCents' };
                 readonly stock: { readonly column: 'stock' };
                 readonly active: { readonly column: 'active' };

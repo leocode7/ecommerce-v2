@@ -5,7 +5,7 @@ model Product {
   name          String
   slug          String    @unique
   description   String?
-  priceCents    Int
+  priceCents    Int?
   stock         Int       @default(0)
   active        Boolean   @default(true)
   createdAt     DateTime  @default(now())

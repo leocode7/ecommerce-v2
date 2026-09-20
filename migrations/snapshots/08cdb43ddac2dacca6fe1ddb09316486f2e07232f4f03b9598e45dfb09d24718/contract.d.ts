@@ -34,7 +34,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'ae4a39358dbdf2bf26354d58438fc5d97c3b187b7acee1b4e4ae15aa4853cae7'>;
+  StorageHashBase<'08cdb43ddac2dacca6fe1ddb09316486f2e07232f4f03b9598e45dfb09d24718'>;
 export type ExecutionHash =
   ExecutionHashBase<'a64b216d24816bc5177a1b8b42b6012ea602ae347892bd4a3b73bb84c2ccc685'>;
 export type ProfileHash =
@@ -247,7 +247,8 @@ export type FieldOutputTypes = {
       readonly name: CodecTypes['pg/text@1']['output'];
       readonly slug: CodecTypes['pg/text@1']['output'];
       readonly description: CodecTypes['pg/text@1']['output'] | null;
-      readonly priceCents: CodecTypes['pg/int4@1']['output'] | null;
+      readonly teste: CodecTypes['pg/text@1']['output'];
+      readonly priceCents: CodecTypes['pg/int4@1']['output'];
       readonly stock: CodecTypes['pg/int4@1']['output'];
       readonly active: CodecTypes['pg/bool@1']['output'];
       readonly createdAt: CodecTypes['pg/timestamptz-temporal@1']['output'];
@@ -262,7 +263,8 @@ export type FieldInputTypes = {
       readonly name: CodecTypes['pg/text@1']['input'];
       readonly slug: CodecTypes['pg/text@1']['input'];
       readonly description: CodecTypes['pg/text@1']['input'] | null;
-      readonly priceCents: CodecTypes['pg/int4@1']['input'] | null;
+      readonly teste: CodecTypes['pg/text@1']['input'];
+      readonly priceCents: CodecTypes['pg/int4@1']['input'];
       readonly stock: CodecTypes['pg/int4@1']['input'];
       readonly active: CodecTypes['pg/bool@1']['input'];
       readonly createdAt: CodecTypes['pg/timestamptz-temporal@1']['input'];
@@ -278,9 +280,10 @@ export type StorageColumnTypes = {
       readonly description: CodecTypes['pg/text@1']['output'] | null;
       readonly id: CodecTypes['pg/int4@1']['output'];
       readonly name: CodecTypes['pg/text@1']['output'];
-      readonly priceCents: CodecTypes['pg/int4@1']['output'] | null;
+      readonly priceCents: CodecTypes['pg/int4@1']['output'];
       readonly slug: CodecTypes['pg/text@1']['output'];
       readonly stock: CodecTypes['pg/int4@1']['output'];
+      readonly teste: CodecTypes['pg/text@1']['output'];
       readonly updatedAt: CodecTypes['pg/timestamptz-temporal@1']['output'];
     };
   };
@@ -293,9 +296,10 @@ export type StorageColumnInputTypes = {
       readonly description: CodecTypes['pg/text@1']['input'] | null;
       readonly id: CodecTypes['pg/int4@1']['input'];
       readonly name: CodecTypes['pg/text@1']['input'];
-      readonly priceCents: CodecTypes['pg/int4@1']['input'] | null;
+      readonly priceCents: CodecTypes['pg/int4@1']['input'];
       readonly slug: CodecTypes['pg/text@1']['input'];
       readonly stock: CodecTypes['pg/int4@1']['input'];
+      readonly teste: CodecTypes['pg/text@1']['input'];
       readonly updatedAt: CodecTypes['pg/timestamptz-temporal@1']['input'];
     };
   };
@@ -307,7 +311,8 @@ export namespace Models {
     name: CodecTypes['pg/text@1']['output'];
     slug: CodecTypes['pg/text@1']['output'];
     description: CodecTypes['pg/text@1']['output'] | null;
-    priceCents: CodecTypes['pg/int4@1']['output'] | null;
+    teste: CodecTypes['pg/text@1']['output'];
+    priceCents: CodecTypes['pg/int4@1']['output'];
     stock: CodecTypes['pg/int4@1']['output'];
     active: CodecTypes['pg/bool@1']['output'];
     createdAt: CodecTypes['pg/timestamptz-temporal@1']['output'];
@@ -366,10 +371,15 @@ type ContractBase = Omit<
                   readonly codecId: 'pg/text@1';
                   readonly nullable: true;
                 };
+                readonly teste: {
+                  readonly nativeType: 'text';
+                  readonly codecId: 'pg/text@1';
+                  readonly nullable: false;
+                };
                 readonly priceCents: {
                   readonly nativeType: 'int4';
                   readonly codecId: 'pg/int4@1';
-                  readonly nullable: true;
+                  readonly nullable: false;
                 };
                 readonly stock: {
                   readonly nativeType: 'int4';
@@ -441,8 +451,12 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly teste: {
+                readonly nullable: false;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
+              };
               readonly priceCents: {
-                readonly nullable: true;
+                readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
               readonly stock: {
@@ -477,6 +491,7 @@ type ContractBase = Omit<
                 readonly name: { readonly column: 'name' };
                 readonly slug: { readonly column: 'slug' };
                 readonly description: { readonly column: 'description' };
+                readonly teste: { readonly column: 'teste' };
                 readonly priceCents: { readonly column: 'priceCents' };
                 readonly stock: { readonly column: 'stock' };
                 readonly active: { readonly column: 'active' };

@@ -34,7 +34,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'0bd971c6ec52ca83e4f2a95b1e1a32959f66ad067691b90c6f5d855755d96360'>;
+  StorageHashBase<'e8db8bdb3da8ef79526df514c7c468dff10cd8ab3d16fac5df44c70b4f6e782e'>;
 export type ExecutionHash = ExecutionHashBase<string>;
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>;
@@ -251,6 +251,7 @@ export type FieldOutputTypes = {
       readonly active: CodecTypes['pg/bool@1']['output'];
       readonly name: CodecTypes['pg/text@1']['output'];
       readonly priceCents: CodecTypes['pg/int4@1']['output'];
+      readonly peso: CodecTypes['pg/int4@1']['output'] | null;
     };
   };
 };
@@ -266,6 +267,7 @@ export type FieldInputTypes = {
       readonly active: CodecTypes['pg/bool@1']['input'];
       readonly name: CodecTypes['pg/text@1']['input'];
       readonly priceCents: CodecTypes['pg/int4@1']['input'];
+      readonly peso: CodecTypes['pg/int4@1']['input'] | null;
     };
   };
 };
@@ -277,6 +279,7 @@ export type StorageColumnTypes = {
       readonly description: CodecTypes['pg/text@1']['output'] | null;
       readonly id: CodecTypes['pg/int4@1']['output'];
       readonly name: CodecTypes['pg/text@1']['output'];
+      readonly peso: CodecTypes['pg/int4@1']['output'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['output'];
       readonly slug: CodecTypes['pg/text@1']['output'];
       readonly stock: CodecTypes['pg/int4@1']['output'];
@@ -292,6 +295,7 @@ export type StorageColumnInputTypes = {
       readonly description: CodecTypes['pg/text@1']['input'] | null;
       readonly id: CodecTypes['pg/int4@1']['input'];
       readonly name: CodecTypes['pg/text@1']['input'];
+      readonly peso: CodecTypes['pg/int4@1']['input'] | null;
       readonly priceCents: CodecTypes['pg/int4@1']['input'];
       readonly slug: CodecTypes['pg/text@1']['input'];
       readonly stock: CodecTypes['pg/int4@1']['input'];
@@ -311,6 +315,7 @@ export namespace Models {
     active: CodecTypes['pg/bool@1']['output'];
     name: CodecTypes['pg/text@1']['output'];
     priceCents: CodecTypes['pg/int4@1']['output'];
+    peso: CodecTypes['pg/int4@1']['output'] | null;
     readonly [RelationKeys]?: never;
   };
 }
@@ -399,6 +404,11 @@ type ContractBase = Omit<
                   readonly codecId: 'pg/int4@1';
                   readonly nullable: false;
                 };
+                readonly peso: {
+                  readonly nativeType: 'int4';
+                  readonly codecId: 'pg/int4@1';
+                  readonly nullable: true;
+                };
               };
               primaryKey: { readonly columns: readonly ['id']; readonly name: 'product_pkey' };
               uniques: readonly [
@@ -468,6 +478,10 @@ type ContractBase = Omit<
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
               };
+              readonly peso: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/int4@1' };
+              };
             };
             readonly relations: Record<string, never>;
             readonly storage: {
@@ -483,6 +497,7 @@ type ContractBase = Omit<
                 readonly active: { readonly column: 'active' };
                 readonly name: { readonly column: 'name' };
                 readonly priceCents: { readonly column: 'priceCents' };
+                readonly peso: { readonly column: 'peso' };
               };
             };
           };

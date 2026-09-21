@@ -11,6 +11,7 @@ model Product {
   active      Boolean     @default(true)
   name        String
   priceCents  Int
+  lua         Int
 
   @@map("product")
 }

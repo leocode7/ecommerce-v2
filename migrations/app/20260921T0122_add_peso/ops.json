@@ -1,0 +1,44 @@
+[
+  {
+    "id": "column.public.product.peso",
+    "label": "Add column \"peso\" to \"product\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "column",
+        "name": "peso",
+        "table": "product"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure column \"peso\" is missing",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"information_schema\".\"columns\" WHERE (\"table_schema\" = $1 AND \"table_name\" = $2 AND \"column_name\" = $3)) AS \"result\"",
+        "params": [
+          "public",
+          "product",
+          "peso"
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add column \"peso\"",
+        "sql": "ALTER TABLE \"public\".\"product\" ADD COLUMN \"peso\" int4"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify column \"peso\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"information_schema\".\"columns\" WHERE (\"table_schema\" = $1 AND \"table_name\" = $2 AND \"column_name\" = $3)) AS \"result\"",
+        "params": [
+          "public",
+          "product",
+          "peso"
+        ]
+      }
+    ]
+  }
+]

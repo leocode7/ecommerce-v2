@@ -1,0 +1,17 @@
+// use prisma-8
+// Contract inferred from the live database schema. Edit as needed, then run `prisma contract emit`.
+
+model Product {
+  id          Int         @id(map: "product_pkey") @default(autoincrement())
+  createdAt   Timestamptz @default(now())
+  description String?
+  slug        String      @unique(map: "product_slug_key")
+  updatedAt   Timestamptz
+  stock       Int         @default(0)
+  active      Boolean     @default(true)
+  name        String
+  priceCents  Int
+  lua         Int
+
+  @@map("product")
+}
